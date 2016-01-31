@@ -1,0 +1,13 @@
+* {
+    font-size: 8px;
+}
+
+GtkButton {
+    background-image: none;
+    border: none;
+}
+
+GtkButton:hover {
+    background-image: none;
+    background-color: #4a90d9;
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/JsExpr">
+    <file preprocess="xml-stripblanks">JsExpr.ui</file>
+    <file >StructureView.css</file>
+  </gresource>
+</gresources>
