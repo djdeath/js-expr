@@ -1,4 +1,4 @@
-js-expr: a quick expression plotter
+js-expr: a simple expression plotter
 
 ![alt tag](/images/screenshot.png)
 
