@@ -14,7 +14,7 @@ let JsGen = ometa {
   arr      trans*:xs                                    -> ('[' + xs.join(',') + ']'),
   unop     :op trans:x                                  -> ('(' + op + ' ' + x + ')'),
   getp     trans:fd trans:x                             -> (x + '[' + fd + ']'),
-  get      :x                                           -> ('ctx.' + x),
+  get      :x                                           -> ((this._forDisplay ? '' : 'ctx.') + x),
   set      trans:lhs trans:rhs                          -> ('(' + lhs + '=' + rhs + ')'),
   mset     trans:lhs :op trans:rhs                      -> ('(' + lhs + op + '=' + rhs + ')'),
   binop    :op trans:x trans:y                          -> ('(' + x + ' ' + op + ' ' + y + ')'),
@@ -55,4 +55,7 @@ let JsGen = ometa {
   switch   trans:x trans*:cases                         -> ('switch(' + x + '){' + cases.join(';') + '}'),
   case     trans:x trans:y                              -> ('case ' + x + ': '+ y),
   default          trans:y                              -> ('default: ' + y)
+};
+JsGen.forDisplay = function(value) {
+  this._forDisplay = value;
 };

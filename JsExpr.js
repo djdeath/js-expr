@@ -30,7 +30,6 @@ let makeEmptyFunctor = function() {
 let makeFunctionFromExpr = function(tree) {
   try {
     let s = '(function() { return function(ctx) { return ' + Parser.JsGen.match(tree, 'trans') + '; }; })();';
-    log(s);
     return eval(s);
   } catch (e) {
     log(e);
@@ -45,16 +44,16 @@ struct1.onHover(function(node) {
   $('canvas').queue_draw();
 });
 
+let generator = Parser.JsGen.createInstance();
+generator.forDisplay(true);
 let expr1 = $('expr1')
 expr1.connect('notify::text', function() {
   let text = expr1.text;
   try {
-    log('text=' + text);
     let structure = Parser.ExprParser.matchAllStructure(text, 'top');
-    log(structure);
     let tree = structure.value;
     let p = function(node) {
-      return Parser.JsGen.match(node, 'trans');
+      return generator.match(node, 'trans');
     };
     struct1.setData(tree, p, p);
     if (tree == null)
