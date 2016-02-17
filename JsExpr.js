@@ -70,9 +70,13 @@ $('canvas').connect('draw', function(w, cr) {
   let alloc = w.get_allocation();
   let ctx = {
     cos: Math.cos,
+    acos: Math.acos,
     sin: Math.sin,
+    asin: Math.asin,
     tan: Math.tan,
     atan: Math.atan,
+    sqrt: Math.sqrt,
+    PI: Math.PI,
     x: -alloc.width / 2 };
 
   // Clear
